@@ -1,0 +1,80 @@
+﻿@using BlazorDapperCrud.Data
+@page "/videoaddedit/{id:int}"
+@inject IVideoService VideoService
+@inject NavigationManager NavigationManager
+
+<h3>@pageTitle</h3>
+
+<EditForm Model="@video" OnValidSubmit="@VideoSave">
+    <table class="editForm">
+        <tr>
+            <td>Video Title:</td>
+            <td><input type="text" @bind="video.Title" required /></td>
+        </tr>
+        <tr>
+            <td>Date Published:</td>
+            <td><input type="date" @bind="video.DatePublished" min="1950-01-01" max="2050-12-31" required /></td>
+        </tr>
+        <tr>
+            <td>Is Active:</td>
+            <td><input type="checkbox" @bind="video.IsActive" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="@buttontext" />
+                <input type="button" value="Cancel" @onclick="@Cancel" />
+            </td>
+        </tr>
+    </table>
+
+
+
+</EditForm>
+
+@code {
+    //create a new, empty Video object
+    Video video = new Video();
+
+    [Parameter]
+    public int id { get; set; }
+
+    //set default page title and button text
+    public string pageTitle = "Add a Video";
+    public string buttontext = "Add";
+
+    //executes as page is loading
+    protected override async Task OnInitializedAsync()
+    {
+        //if the id is zero assume new video
+        if(id == 0)
+        {
+            DateTime defaultDate = DateTime.Now;
+            video.DatePublished = defaultDate;
+            video.IsActive = true;
+        }
+        else {
+            video = await VideoService.GetOne(id);
+            pageTitle = "Edit Video";
+            buttontext = "Update";
+
+        }
+    }
+
+    protected async Task VideoSave()
+    {
+        if(video.Id == 0)
+        {
+            await VideoService.VideoInsert(video);
+        }
+        else
+        {
+            await VideoService.VideoUpdate(video);
+        }
+        NavigationManager.NavigateTo("/videolist");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("/videolist");
+    }
+}

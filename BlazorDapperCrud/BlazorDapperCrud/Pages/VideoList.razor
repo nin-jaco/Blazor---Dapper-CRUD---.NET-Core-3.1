@@ -2,14 +2,14 @@
 @page "/videolist"
 @inject IVideoService VideoService
 
-<h3>VideoList</h3>
+<h3>Video List</h3>
 <p style="text-align:center">
     <a href="/videoAdd">Add a Video</a>
 </p>
-@if(VideoService == null)
+@if(videos == null)
 {
     <p style="text-align:center">
-        <img src="~/images/loader.gif" />
+        <img src="../images/loader.gif" />
     </p>
 }
 else
@@ -20,14 +20,36 @@ else
             <th>Video Title</th>
             <th>Date Published</th>
             <th>Is Active</th>
+            <th>Delete</th>
         </tr>
         @foreach(var video in videos)
         {
-        <tr>
-            <td>
-                <img src="~/images/iEdit.png" />
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <a href="videoaddedit/@video.Id">
+                <img src="../images/iEdit.png" style="width:40px" />
+            </a>
+        </td>
+        <td>@video.Title</td>
+        <td>@video.DatePublished.ToShortDateString()</td>
+        <td>
+            @if (video.IsActive)
+            {
+
+                <img src="../images/iGreenCheck.png" style="width:40px" />
+
+            }
+            else
+            {
+                <img src="../images/iRedCross.png" style="width:40px;" />
+            }
+        </td>
+        <td>
+            <a href="videodelete/@video.Id">
+                <img src="../images/iDelete.png" style="width:40px" />
+            </a>
+        </td>
+    </tr>
         }
     </table>
 }
@@ -35,5 +57,10 @@ else
 
 
 @code {
+    IEnumerable<Video> videos;
+    protected override async Task OnInitializedAsync()
+    {
+        videos = await VideoService.VideoList();
+    }
 
 }

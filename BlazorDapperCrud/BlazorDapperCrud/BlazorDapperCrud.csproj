@@ -9,4 +9,12 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\iEdit.png" />
+    <None Include="wwwroot\images\iGreenCheck.png" />
+    <None Include="wwwroot\images\iRedCross.png" />
+    <None Include="wwwroot\images\loader.gif" />
+    <None Include="wwwroot\images\iDelete.png" />
+  </ItemGroup>
+
 </Project>

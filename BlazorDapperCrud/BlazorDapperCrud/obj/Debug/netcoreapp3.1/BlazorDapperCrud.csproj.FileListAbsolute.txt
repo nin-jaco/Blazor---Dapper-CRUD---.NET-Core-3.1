@@ -69,3 +69,13 @@ C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\Bla
 C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\VideoAdd.razor.g.cs
 C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Pages\VideoAdd.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\VideoList.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Pages\VideoList.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Header.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Shared\Header.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\Footer.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Shared\Footer.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\VideoAddEdit.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Pages\VideoAddEdit.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\VideoDelete.razor.g.cs
+C:\Source\BlazorDapper\Blazor---Dapper-CRUD---.NET-Core-3.1\BlazorDapperCrud\BlazorDapperCrud\obj\Debug\netcoreapp3.1\Razor\Pages\VideoDelete.razor.g.cs

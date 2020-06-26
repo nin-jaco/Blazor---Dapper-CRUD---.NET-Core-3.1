@@ -6,7 +6,7 @@
 <h3>VideoAdd</h3>
 
 <EditForm Model="@video" OnValidSubmit="@VideoInsert">
-    <table>
+    <table class="editForm">
         <tr>
             <td>Video Title:</td>
             <td><input type="text" @bind="video.Title" required /></td>

@@ -13,6 +13,7 @@ namespace BlazorDapperCrud.Data
     {
         //database connections
         private readonly SqlConnectionConfiguration _configuration;
+        private Task<IEnumerable<Video>> _videoList;
 
         public VideoService(SqlConnectionConfiguration configuration)
         {
@@ -40,6 +41,7 @@ namespace BlazorDapperCrud.Data
             return true;
         }
 
+
         //GetAll
         public async Task<IEnumerable<Video>> VideoList()
         {
@@ -50,6 +52,51 @@ namespace BlazorDapperCrud.Data
             }
 
             return videos;
+        }
+
+        //get one by id
+        public async Task<Video> GetOne(int id)
+        {
+            Video video = new Video();
+            var parameters = new DynamicParameters();
+            parameters.Add("Id", id, DbType.Int32);
+
+
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                video = await conn.QueryFirstOrDefaultAsync<Video>("spVideo_GetOne", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return video;
+        }
+
+        //update
+        public async Task<bool> VideoUpdate(Video video)
+        {
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("Id", video.Id, DbType.Int32);
+                parameters.Add("Title", video.Title, DbType.String);
+                parameters.Add("DatePublished", video.DatePublished, DbType.Date);
+                parameters.Add("IsActive", video.IsActive, DbType.Boolean);
+                await conn.ExecuteAsync("spVideo_Update", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return true;
+        }
+
+        //Delete
+        public async Task<bool> VideoDelete(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Id", id, DbType.Int32);
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                await conn.ExecuteAsync("spVideo_Delete", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return true;
         }
     }
 }
