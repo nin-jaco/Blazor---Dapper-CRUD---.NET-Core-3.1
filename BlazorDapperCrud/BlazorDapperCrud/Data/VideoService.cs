@@ -28,13 +28,28 @@ namespace BlazorDapperCrud.Data
                 parameters.Add("Title", video.Title, DbType.String);
                 parameters.Add("DatePublished", video.DatePublished, DbType.Date);
                 parameters.Add("IsActive", video.IsActive, DbType.Boolean);
-                const string query =
+                //stored procedure
+                await conn.ExecuteAsync("spVideo_Insert", parameters, commandType: CommandType.StoredProcedure);
+                //raw sql method
+                /*const string query =
                     "INSERT INTO Video(Title,DatePublished,IsActive)VALUES(@Title, @DatePublished, @IsActive)";
                 await conn.ExecuteAsync(query, new {video.Title, video.DatePublished, video.IsActive},
-                    commandType: CommandType.Text);
+                    commandType: CommandType.Text);*/
             }
 
             return true;
+        }
+
+        //GetAll
+        public async Task<IEnumerable<Video>> VideoList()
+        {
+            IEnumerable<Video> videos;
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                videos = await conn.QueryAsync<Video>("spVideo_GetAll", commandType: CommandType.StoredProcedure);
+            }
+
+            return videos;
         }
     }
 }
